@@ -19,13 +19,15 @@
         {
             services.AddMvc();
             services.AddStorageService(Configuration.GetSection("AzureBlobStorageService"));
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
+                ///// .... app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else
